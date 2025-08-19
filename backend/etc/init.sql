@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS tracking_optin (
+    id SERIAL PRIMARY KEY,
+    payload JSONB NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

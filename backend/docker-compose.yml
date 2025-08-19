@@ -1,0 +1,45 @@
+services:
+  backend:
+    build: .
+    environment:
+      - FLASK_DEBUG=1
+      - CORS_ORIGINS=https://zatec-store.myshopify.com
+      - DATABASE_URL=postgresql+psycopg2://admin:admin@db:5432/db
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./src:/app/src
+    networks:
+      - internal
+    depends_on:
+      - db
+
+  ngrok:
+    image: ngrok/ngrok
+    environment:
+      - NGROK_CONFIG=/etc/ngrok.yml
+    volumes:
+      - ./etc/ngrok.yml:/etc/ngrok.yml
+    command: start --config /etc/ngrok.yml --all --log stdout
+    networks:
+      - internal
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:15
+    container_name: postgres-tracking
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./tmp:/var/lib/postgresql/data
+      - ./etc/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - internal
+
+networks:
+  internal:

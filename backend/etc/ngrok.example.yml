@@ -1,0 +1,8 @@
+version: "2"
+authtoken: <enter grok token>
+region: sa  # Opcional: sa = América do Sul, us = Estados Unidos, eu = Europa, etc.
+tunnels:
+  my-tunel:
+    proto: http
+    addr: backend:5001
+    url: <enter gook url>

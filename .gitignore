@@ -1,0 +1,36 @@
+## frontend
+# Environment Configuration
+.env
+.env.*
+
+# Dependency directory
+node_modules
+
+# Test coverage directory
+coverage
+
+# Ignore Apple macOS Desktop Services Store
+.DS_Store
+
+# Logs
+logs
+*.log
+
+# extensions build output
+extensions/*/build
+extensions/*/dist
+
+# lock files
+
+
+# Ignore shopify files created during app dev
+.shopify/*
+.shopify.lock
+
+
+## backend
+backend/config/ngrok.yml
+__pycache__
+tmp
+ngrok.yml
+backend/src/app/public/widget
