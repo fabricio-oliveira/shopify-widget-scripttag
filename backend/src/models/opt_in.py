@@ -57,6 +57,6 @@ class OptIn(Base):
     def carbon_offset_value(self, value: float):
         self.payload["carbon_offset_value"] = value
 
-    # Método opcional para mapear todo o JSON para uma classe
+    # Optional method to map all JSON to a class
     def payload_as_object(self, cls):
         return cls(**self.payload)

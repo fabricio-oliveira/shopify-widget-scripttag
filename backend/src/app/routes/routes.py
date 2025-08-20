@@ -5,7 +5,7 @@ from repository.optin_repository import OptInRepository
 bp = Blueprint("routes", __name__)
 
 
-# Endpoint GET - retorna valor da compensação de carbono
+# Endpoint GET - returns carbon offset value
 @bp.route("/api/carbonoffset/value", methods=["POST"])
 def get_value():
     data = request.json
@@ -20,7 +20,7 @@ def get_value():
     return jsonify({"value": round(price * 0.02, 2)})
 
 
-# Endpoint POST -  offset
+# Endpoint POST -  track optin
 @bp.route("/api/optin/track", methods=["POST"])
 def enable_offset():
     data = request.json
